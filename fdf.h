@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/02/29 13:42:34 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/01 16:16:54 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,12 @@ typedef struct s_data
 	int	line_lenght;
 	int	endian;
 }				t_data;
+
+typedef struct s_vars
+{
+	void	*mlx;
+	void	*win;
+	t_data	img;
+}				t_vars;
 
 #endif
