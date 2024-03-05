@@ -6,11 +6,12 @@
 /*   By: vstineau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 11:28:56 by vstineau          #+#    #+#             */
-/*   Updated: 2023/12/07 14:44:03 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:30:44 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 
 char	*read_fd(int fd, char *buffer)
 {

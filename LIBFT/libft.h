@@ -6,7 +6,7 @@
 /*   By: vstineau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:54 by vstineau          #+#    #+#             */
-/*   Updated: 2024/02/27 11:52:11 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:12:09 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -38,6 +38,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strncpy(char *dest, char *src, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+char	*ft_strcat(char *dest, char *src);
+char	*ft_strncat(char *dest, char *src, unsigned int nb);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
