@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/05 15:34:11 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/06 11:20:39 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,29 +47,32 @@ static int	arg_per_line(char **map)
 	return (count);
 }
 
-static int	**ta_to_ti(char **map, int lins_number)
+static int	**ta_to_ti(char **map, int line_number, t_vars *vars)
 {
 	int	**int_map;
 	int	i;
 	int	j;
 
 	i = 0;
-	int_map = malloc(sizeof(int *) * lins_number);
-	while (map[i])
+	vars->apl = arg_per_line(map);
+	vars->line_nb = line_number;
+	int_map = malloc(sizeof(int *) * line_number);
+	while (i < line_number)
 	{
 		j = 0;
-		map[i] = malloc(sizeof(int) * arg_per_line(map));
-		while (j < ft_strleni(map[i]))
+		int_map[i] = malloc(sizeof(int) * vars->apl);
+		while (j < vars->apl)
 		{
 			int_map[i][j] = ft_atoi((const char *)map[i] + j);
 			j++;
 		}
 		i++;
 	}
+	ft_free_char_tab(map);
 	return (int_map);
 }
 
-int	**parse(char *argv)
+int	**parse(char *argv, t_vars *vars)
 {
 	int		fd;
 	char	**map;
@@ -85,7 +88,7 @@ int	**parse(char *argv)
 	ft_strcpy(ln, tp);
 	while (tp)
 	{
-		lin = ft_realloc(ln, ft_strlen(ln), ft_strlen(tp) + ft_strlen(ln) + 1);
+		ln = ft_realloc(ln, ft_strlen(ln), ft_strlen(tp) + ft_strlen(ln) + 1);
 		ft_strcat(ln, tp);
 		free(tp);
 		tp = get_next_line(fd);
@@ -95,5 +98,5 @@ int	**parse(char *argv)
 	map = ft_split(ln, '\n');
 	free(ln);
 	close(fd);
-	return (ta_to_ti(map, n));
+	return (ta_to_ti(map, n, vars));
 }
