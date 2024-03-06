@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/06 11:20:39 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:38:54 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,14 @@ static int	**ta_to_ti(char **map, int line_number, t_vars *vars)
 	vars->apl = arg_per_line(map);
 	vars->line_nb = line_number;
 	int_map = malloc(sizeof(int *) * line_number);
+	if (!int_map)
+		ft_free_and_exit(map, int_map, vars);
 	while (i < line_number)
 	{
 		j = 0;
 		int_map[i] = malloc(sizeof(int) * vars->apl);
+		if (!int_map)
+			ft_free_and_exit(map, int_map, vars);
 		while (j < vars->apl)
 		{
 			int_map[i][j] = ft_atoi((const char *)map[i] + j);

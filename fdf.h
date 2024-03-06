@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/06 15:13:00 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:37:17 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 typedef struct s_data 
 {
 	void	*img;
-	char	*adr;
+	char	*addr;
 	int	bit_per_pixel;
-	int	line_lenght;
+	int	line_length;
 	int	endian;
 }				t_data;
 
@@ -52,6 +52,7 @@ int	**parse(char *argv, t_vars *vars);
 void	free_end(t_vars *v);
 void	ft_free_int_tab(int **tab, int linenumb);
 void	ft_free_char_tab(char **tab);
+void	ft_free_and_exit(char **map, int **tab, t_vars *v);
 //MOUSE ACTION;
 int	mouse_action(int keycode,t_vars	*vars);
 //WINDOWS ACTIONS
