@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/06 11:17:34 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:13:00 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,12 @@ typedef struct s_vars
 //PARSING :
 int	**parse(char *argv, t_vars *vars);
 //FONCTIONS POUR FREE :
+void	free_end(t_vars *v);
 void	ft_free_int_tab(int **tab, int linenumb);
 void	ft_free_char_tab(char **tab);
+//MOUSE ACTION;
+int	mouse_action(int keycode,t_vars	*vars);
+//WINDOWS ACTIONS
+int	window_action(int keycode, t_vars *vars);
 
 #endif

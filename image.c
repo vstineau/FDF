@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 11:35:02 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/06 15:25:38 by vstineau         ###   ########.fr       */
+/*   Created: 2024/03/06 14:32:44 by vstineau          #+#    #+#             */
+/*   Updated: 2024/03/06 14:37:26 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "minilibx-linux/mlx.h"
 
-int	main(int argc, char *argv[])
+void	my_mlx_pixel_put(t_data *data,  int x, int y, int color)
 {
-	t_vars	v;
+	char	*dest;
 
-	if (argc < 2)
-		return (1);
-	v.map = parse(argv[1], &v);
-	v.mlx = mlx_init();
-	v.win = mlx_new_window(v.mlx, WIN_WIDTH, WIN_HEIGHT, "FDF");
-	mlx_hook(v.win, KeyPress, KeyPressMask, window_action, &v);
-	mlx_loop(v.mlx);
-	//mlx_destroy_image(v.mlx, v.img.img);
-	mlx_destroy_window(v.mlx, v.win);
-	mlx_destroy_display(v.mlx);
-	free_end(&v);
+	dest = data->adr + (y * data->line_lenght + x * (data->bit_per_pixel / 8));
+	*(unsigned int *)dest = color;
 }
