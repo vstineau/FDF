@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/06 17:37:17 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:50:43 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
-	int		**map;	
-	int		scale;
+	int		**map;
+	float	**matrice_p;
 	int	line_nb;
 	int	apl;
 	t_data	img;
