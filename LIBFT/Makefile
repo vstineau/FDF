@@ -6,7 +6,7 @@
 #    By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/01 14:25:51 by vstineau          #+#    #+#              #
-#    Updated: 2024/02/27 11:46:30 by vstineau         ###   ########.fr        #
+#    Updated: 2024/03/11 12:02:53 by vstineau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS = ft_isalpha.c \
 			 ft_isascii.c \
 			 ft_isprint.c \
 			 ft_strlen.c \
+			 ft_abs.c \
 			 ft_memset.c \
 			 ft_bzero.c \
 			 ft_memcpy.c \
