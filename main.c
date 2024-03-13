@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:35:02 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/12 13:21:32 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:01:03 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	main(int argc, char *argv[])
 	print_lines(&v);
 	print_column(&v);
 	mlx_put_image_to_window(v.mlx, v.win, v.data.img, 0, 0);
-	mlx_loop(v.mlx);
 	mlx_hook(v.win, KeyPress, KeyPressMask, window_action, &v);
+	mlx_loop(v.mlx);
 	mlx_destroy_image(v.mlx, v.data.img);
 	mlx_destroy_window(v.mlx, v.win);
 	mlx_destroy_display(v.mlx);

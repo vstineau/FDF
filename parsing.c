@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/13 14:53:33 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:04:03 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,36 @@ static int	arg_per_line(char **map)
 	return (count);
 }
 
-void	set_point(char *line, int i, int j, t_vars *v)
+static void	set_line(char **ls, int i, t_vars *v, t_point *map)
 {
-	int **ls;
-
-	ls =
+	int	j;
+	int	k;
+	
+	j = 0;
+	while (j < v->apl)
+	{
+		k = 0;
+		map[j].x = j;
+		map[j].y = i;
+		while (ls[j][k])
+			map[j].z = ft_atoi((const char *)ls[j] + k++);
+		if (ls[j][k] == ',')
+		{
+			k += 2;
+			while (ls[j][k])
+				map[j].color = (unsigned int)ft_atoi((const char *)ls[j] + k++);
+		}
+		else 
+			map[j].color = DEFAULT_COLOR;
+		j++;
+	}
 }
 
 static t_point	**ta_to_point(char **map, t_vars *v)
 {
 	t_point	**int_map;
+	char	**ls;
 	int	i;
-	int	j;
 
 	i = 0;
 	v->apl = arg_per_line(map);
@@ -67,18 +85,14 @@ static t_point	**ta_to_point(char **map, t_vars *v)
 		ft_free_and_exit(map, int_map,v);
 	while (i < v->line_nb)
 	{
-		j = 0;
 		int_map[i] = malloc(sizeof(t_point) *v->apl);
 		if (!int_map)
 			ft_free_and_exit(map, int_map,v);
-		while (j <v->apl)
-		{
-			set_point(map[i], i, j, v);
-			int_map[i][j].z = ft_atoi((const char *)map[i] + j);
-			int_map[i][j].x = j;
-			int_map[i][j].y = i;
-			j++;
-		}
+		ls = ft_split(map[i], 32);
+		if (!ls)
+			ft_free_and_exit(map, int_map, v);
+		set_line(ls, i, v, int_map[i]);
+		ft_free_char_tab(ls);
 		i++;
 	}
 	ft_free_char_tab(map);

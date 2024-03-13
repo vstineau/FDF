@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:08:46 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/13 11:43:38 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:04:58 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,6 @@ void	ft_free_point(t_point **tab, int linenumb)
 	free(tab);
 }
 
-void	ft_free_int_tab2(int ***tab, int linenumb, int apl)
-{
-	int	i;
-	int	j;
-
-	if (!tab)
-		return ;
-	i = 0;
-	j = 0;
-	while (i < linenumb)
-	{
-		while(j < apl)
-			free(tab[i][j++]);
-		free(tab[i++]);
-	}
-	free(tab);
-}
-
 void	ft_free_char_tab(char **tab)
 {
 	int	i;
@@ -56,9 +38,8 @@ void	ft_free_char_tab(char **tab)
 
 void	free_end(t_vars *v)
 {
-	ft_free_int_tab(v->map, v->line_nb);
+	ft_free_point(v->map, v->line_nb);
 	ft_free_int_tab((int**)v->matrice_p, 4);
-	ft_free_int_tab2(v->map_iso, v->line_nb, v->apl);
 	//free(v->win);
 	free(v->mlx);
 }

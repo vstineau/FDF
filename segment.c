@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:02:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/12 14:47:36 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:58:53 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ static void	pre_plotline(t_vars *v, int i, int j, bool vertical)
 {
 	if (vertical == true)
 	{
-		v->x0 = v->map_iso[i][j][0];
-		v->x1 = v->map_iso[i][j][1];
-		v->y0 = v->map_iso[i + 1][j][0];
-		v->y1 = v->map_iso[i + 1][j][1];
+		v->x0 = v->map[i][j].x;
+		v->x1 = v->map[i + 1][j].x;
+		v->y0 = v->map[i][j].y;
+		v->y1 = v->map[i + 1][j].y;
 	}
 	else 
 	{
-		v->x0 = v->map_iso[i][j][0];
-		v->x1 = v->map_iso[i][j][1];
-		v->y0 = v->map_iso[i][j + 1][0];
-		v->y1 = v->map_iso[i][j + 1][1];
+		v->x0 = v->map[i][j].x;
+		v->x1 = v->map[i + 1][j].x;
+		v->y0 = v->map[i][j].y;
+		v->y1 = v->map[i + 1][j].y;
 	}
 	v->dx = ft_abs(v->x0 - v->x1);
 	v->dy = ft_abs(v->y0 - v->y1);
@@ -46,11 +46,9 @@ static void	pre_plotline(t_vars *v, int i, int j, bool vertical)
 static void	plotline(t_vars *v)
 {
 	v->color = 0x000000FF;
-	while (1)
+	while (v->x0 > v->x1 || v->y0 > v->y1)
 	{
 		my_mlx_pixel_put(&(v->data), v->x0, v->y0, v->color);
-		if (v->x0 == v->x1 && v->y0 == v->y1)
-			break;
 		v->e2 = 2 * v->err;
 		if (v->e2 >= v->dy)
 		{
@@ -71,7 +69,7 @@ void	print_lines(t_vars *v)
 	int	j;
 
 	i = 0;
-	while (i < v->line_nb)
+	while (i < v->line_nb - 1)
 	{
 		j = 0;
 		while (j < v->apl - 1)
@@ -89,7 +87,7 @@ void	print_column(t_vars *v)
 	int	j;
 
 	i = 0;
-	while (i < v->line_nb -1)
+	while (i < v->line_nb - 1)
 	{
 		j = 0;
 		while (j < v->apl - 1)

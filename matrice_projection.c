@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:29:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/13 14:27:07 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:04:28 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	init_map_iso(t_vars *v)
 {
 	int	y;
 	int	x;
-	int	z;
 
 	y = 0;
 	init_matrice_p(v);
