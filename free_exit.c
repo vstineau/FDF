@@ -6,15 +6,27 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 12:58:17 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/08 12:59:15 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:47:27 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_free_and_exit(char **map, int **tab, t_vars *v)
+void	ft_free_int_tab(int **tab, int linenumb)
 {
-	ft_free_int_tab(tab, v->line_nb);
+	int	i;
+
+	if (!tab)
+		return ;
+	i = 0;
+	while (i < linenumb)
+		free(tab[i++]);
+	free(tab);
+}
+
+void	ft_free_and_exit(char **map, t_point **tab, t_vars *v)
+{
+	ft_free_point(tab, v->line_nb);
 	ft_free_char_tab(map);
 	exit(1);
 }

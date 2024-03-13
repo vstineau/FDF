@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/11 15:03:49 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:54:38 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 # define WIN_WIDTH 1920 //960
 # define WIN_HEIGHT 1080 //540
+# define DEFAULT_COLOR 0xFFFFFFFF
 
 typedef struct s_data
 {
@@ -35,11 +36,18 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+	int	z;
+	unsigned int color;
+}				t_point;
+
 typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
-	int			**map;
 	int			***map_iso;
 	float		**matrice_p;
 	int			line_nb;
@@ -57,23 +65,31 @@ typedef struct s_vars
 	int	sy;
 	int	err;
 	int	e2;
-	t_data		*img;
+	t_point		**map;
+	t_data		data;
 }				t_vars;
 
 //PARSING :
-int		**parse(char *argv, t_vars *vars);
+t_point		**parse(char *argv, t_vars *vars);
 //FONCTIONS POUR FREE :
 void	free_end(t_vars *v);
+void	ft_free_point(t_point **tab, int linenumb);
 void	ft_free_int_tab(int **tab, int linenumb);
 void	ft_free_int_tab2(int ***tab, int linenumb, int apl);
 void	ft_free_char_tab(char **tab);
-void	ft_free_and_exit(char **map, int **tab, t_vars *v);
+void	ft_free_and_exit(char **map, t_point **tab, t_vars *v);
 void	ft_free_and_exit2(t_vars *v);
 //MOUSE ACTION;
 int		mouse_action(int keycode, t_vars *vars);
 //WINDOWS ACTIONS
 int		window_action(int keycode, t_vars *vars);
+//MATRICE DE PROJECTION
+int	*get_new_position(float **mat_p, int x, int y, int z);
+void	init_map_iso(t_vars *v);
 //AFFICHAGE DES PIXELS
+void	start_image(t_vars *v);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	print_lines(t_vars *v);
+void	print_column(t_vars *v);
 
 #endif

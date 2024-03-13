@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 11:02:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/11 16:34:46 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:47:36 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	pre_plotline(t_vars *v, int i, int j, bool vertical)
 	}
 	v->dx = ft_abs(v->x0 - v->x1);
 	v->dy = ft_abs(v->y0 - v->y1);
+	v->err = v->dy + v->dx;
 	if (v->x0 < v->x1)
 		v->sx = 1;
 	else
@@ -41,13 +42,13 @@ static void	pre_plotline(t_vars *v, int i, int j, bool vertical)
 	else
 		v->sy = -1;
 }
-
-void	plotline(t_vars *v)
+//ALGO DE TRACE DE SEGMENT DE BRESENHAM
+static void	plotline(t_vars *v)
 {
 	v->color = 0x000000FF;
 	while (1)
 	{
-		my_mlx_pixel_put(v->img, v->x0, v->y0, v->color);
+		my_mlx_pixel_put(&(v->data), v->x0, v->y0, v->color);
 		if (v->x0 == v->x1 && v->y0 == v->y1)
 			break;
 		v->e2 = 2 * v->err;
@@ -63,3 +64,40 @@ void	plotline(t_vars *v)
 		}
 	}
 }
+//TRACE TOUTES LES LIGNES ENTRE LES POINTS D'UNE MEME LIGNE
+void	print_lines(t_vars *v)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < v->line_nb)
+	{
+		j = 0;
+		while (j < v->apl - 1)
+		{
+			pre_plotline(v, i, j++, false);
+			plotline(v);
+		}
+		i++;
+	}
+}
+//TRACE TOUTES LES LIGNES ENTRE LES POINTS D'UNE MEME COLONNE
+void	print_column(t_vars *v)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < v->line_nb -1)
+	{
+		j = 0;
+		while (j < v->apl - 1)
+		{
+			pre_plotline(v, i, j++, true);
+			plotline(v);
+		}
+		i++;
+	}
+}
+

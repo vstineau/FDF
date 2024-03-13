@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:32:44 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/11 16:53:56 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:41:02 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	start_image(t_vars *v)
 {
-	v->img.img = mlx_new_image(v->mlx, WIN_WIDTH, WIN_HEIGHT);
-	v->img.addr = mlx_get_data_addr(v->img.img, &v->img.bit_per_pixel,
-			&v->img.line_length, &v->img.endian);
+	v->data.img = mlx_new_image(v->mlx, WIN_WIDTH, WIN_HEIGHT);
+	v->data.addr = mlx_get_data_addr(v->data.img, &v->data.bit_per_pixel,
+			&v->data.line_length, &v->data.endian);
 }
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)

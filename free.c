@@ -6,13 +6,13 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:08:46 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/08 12:59:57 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:43:38 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_free_int_tab(int **tab, int linenumb)
+void	ft_free_point(t_point **tab, int linenumb)
 {
 	int	i;
 

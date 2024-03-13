@@ -6,7 +6,7 @@
 #    By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 10:33:24 by vstineau          #+#    #+#              #
-#    Updated: 2024/03/08 13:02:35 by vstineau         ###   ########.fr        #
+#    Updated: 2024/03/12 10:56:15 by vstineau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS			= main.c \
 						\
 						window.c \
 						image.c \
+						segment.c \
 						mouse.c \
 						\
 						matrice_projection.c

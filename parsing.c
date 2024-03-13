@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/06 17:38:54 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/13 14:53:33 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,36 @@ static int	arg_per_line(char **map)
 	return (count);
 }
 
-static int	**ta_to_ti(char **map, int line_number, t_vars *vars)
+void	set_point(char *line, int i, int j, t_vars *v)
 {
-	int	**int_map;
+	int **ls;
+
+	ls =
+}
+
+static t_point	**ta_to_point(char **map, t_vars *v)
+{
+	t_point	**int_map;
 	int	i;
 	int	j;
 
 	i = 0;
-	vars->apl = arg_per_line(map);
-	vars->line_nb = line_number;
-	int_map = malloc(sizeof(int *) * line_number);
+	v->apl = arg_per_line(map);
+	int_map = malloc(sizeof(t_point *) * v->line_nb);
 	if (!int_map)
-		ft_free_and_exit(map, int_map, vars);
-	while (i < line_number)
+		ft_free_and_exit(map, int_map,v);
+	while (i < v->line_nb)
 	{
 		j = 0;
-		int_map[i] = malloc(sizeof(int) * vars->apl);
+		int_map[i] = malloc(sizeof(t_point) *v->apl);
 		if (!int_map)
-			ft_free_and_exit(map, int_map, vars);
-		while (j < vars->apl)
+			ft_free_and_exit(map, int_map,v);
+		while (j <v->apl)
 		{
-			int_map[i][j] = ft_atoi((const char *)map[i] + j);
+			set_point(map[i], i, j, v);
+			int_map[i][j].z = ft_atoi((const char *)map[i] + j);
+			int_map[i][j].x = j;
+			int_map[i][j].y = i;
 			j++;
 		}
 		i++;
@@ -76,13 +85,12 @@ static int	**ta_to_ti(char **map, int line_number, t_vars *vars)
 	return (int_map);
 }
 
-int	**parse(char *argv, t_vars *vars)
+t_point	**parse(char *argv, t_vars *v)
 {
 	int		fd;
 	char	**map;
 	char	*ln;
 	char	*tp;
-	int		n;
 
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
@@ -97,10 +105,10 @@ int	**parse(char *argv, t_vars *vars)
 		free(tp);
 		tp = get_next_line(fd);
 	}
-	n = count_line(ln);
+	v->line_nb = count_line(ln);
 	free(tp);
 	map = ft_split(ln, '\n');
 	free(ln);
 	close(fd);
-	return (ta_to_ti(map, n, vars));
+	return (ta_to_point(map, v));
 }
