@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/13 17:39:18 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:29:41 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@
 # define WIN_WIDTH 960
 # define WIN_HEIGHT 540
 # define DEFAULT_COLOR 0xFFFFFFFF
+# define RED 0x00FF0000
+# define GREEN 0x0000FF00
+# define BLUE 0x000000FF
+# define OFFSET_X 480
+# define OFFSET_Y 270
+# define M 8
 
 typedef struct s_data
 {
@@ -38,9 +44,9 @@ typedef struct s_data
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-	int	z;
+	float	x;
+	float	y;
+	float	z;
 	unsigned int color;
 }				t_point;
 
@@ -48,23 +54,22 @@ typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
-	int			***map_iso;
 	float		**matrice_p;
 	int			line_nb;
 	int			apl;
-	int			scale;
+	float		scale;
 	int			height;
 	int	color;
-	int	x0;
-	int	x1;
-	int	y0;
-	int	y1;
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
-	int	err;
-	int	e2;
+	float	x0;
+	float x1;
+	float y0;
+	float y1;
+	float dx;
+	float dy;
+	float sx;
+	float sy;
+	float err;
+	float e2;
 	t_point		**map;
 	t_data		data;
 }				t_vars;
@@ -83,6 +88,8 @@ void	ft_free_and_exit2(t_vars *v);
 int		mouse_action(int keycode, t_vars *vars);
 //WINDOWS ACTIONS
 int		window_action(int keycode, t_vars *vars);
+int		close_windows(t_vars *vars);
+int	loop(t_vars *vars);
 //MATRICE DE PROJECTION
 int	*get_new_position(float **mat_p, int x, int y, int z);
 void	init_map_iso(t_vars *v);

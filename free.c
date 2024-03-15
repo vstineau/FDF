@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:08:46 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/13 17:04:58 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:32:04 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_free_char_tab(char **tab)
 void	free_end(t_vars *v)
 {
 	ft_free_point(v->map, v->line_nb);
-	ft_free_int_tab((int**)v->matrice_p, 4);
+	ft_free_int_tab((int**)v->matrice_p, 2);
 	//free(v->win);
 	free(v->mlx);
 }

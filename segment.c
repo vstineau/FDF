@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 11:02:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/13 17:58:53 by vstineau         ###   ########.fr       */
+/*   Created: 2024/0M/11 11:02:35 by vstineau          #+#    #+#             */
+/*   Updated: 2024/03/15 17:28:58 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ static void	pre_plotline(t_vars *v, int i, int j, bool vertical)
 {
 	if (vertical == true)
 	{
-		v->x0 = v->map[i][j].x;
-		v->x1 = v->map[i + 1][j].x;
-		v->y0 = v->map[i][j].y;
-		v->y1 = v->map[i + 1][j].y;
+		v->x0 = v->map[i][j].x * M;
+		v->x1 = v->map[i + 1][j].x * M;
+		v->y0 = v->map[i][j].y * M;
+		v->y1 = v->map[i + 1][j].y * M;
 	}
 	else 
 	{
-		v->x0 = v->map[i][j].x;
-		v->x1 = v->map[i + 1][j].x;
-		v->y0 = v->map[i][j].y;
-		v->y1 = v->map[i + 1][j].y;
+		v->x0 = v->map[i][j].x * M;
+		v->x1 = v->map[i][j + 1].x * M;
+		v->y0 = v->map[i][j].y * M;
+		v->y1 = v->map[i][j + 1].y * M;
 	}
-	v->dx = ft_abs(v->x0 - v->x1);
-	v->dy = ft_abs(v->y0 - v->y1);
+	v->dx = fabsf(v->x1 - v->x0);
+	v->dy = -fabsf(v->y1 - v->y0);
 	v->err = v->dy + v->dx;
 	if (v->x0 < v->x1)
 		v->sx = 1;
@@ -45,10 +45,16 @@ static void	pre_plotline(t_vars *v, int i, int j, bool vertical)
 //ALGO DE TRACE DE SEGMENT DE BRESENHAM
 static void	plotline(t_vars *v)
 {
-	v->color = 0x000000FF;
-	while (v->x0 > v->x1 || v->y0 > v->y1)
+	float	i;
+	float	j;
+
+	i = 0;
+	j = 0;
+	v->color = GREEN;
+	while ((int)i < (int)v->dx || (int)j < (int) -v->dy)
 	{
-		my_mlx_pixel_put(&(v->data), v->x0, v->y0, v->color);
+		my_mlx_pixel_put(&(v->data), (int)v->x0, (int)v->y0, v->color);
+		printf("x0 = %f x1 = %f y0 = %f y1 = %f\n", v->x0, v->x1, v->y0, v->y1);
 		v->e2 = 2 * v->err;
 		if (v->e2 >= v->dy)
 		{
@@ -58,8 +64,10 @@ static void	plotline(t_vars *v)
 		if (v->e2 <= v->dx)
 		{
 			v->err += v->dx;
-			v->x0 += v->sy;
+			v->y0 += v->sy;
 		}
+		i+=fabs(v->sx);
+		j+=fabs(v->sy);
 	}
 }
 //TRACE TOUTES LES LIGNES ENTRE LES POINTS D'UNE MEME LIGNE
@@ -69,7 +77,7 @@ void	print_lines(t_vars *v)
 	int	j;
 
 	i = 0;
-	while (i < v->line_nb - 1)
+	while (i < v->line_nb)
 	{
 		j = 0;
 		while (j < v->apl - 1)
@@ -90,7 +98,7 @@ void	print_column(t_vars *v)
 	while (i < v->line_nb - 1)
 	{
 		j = 0;
-		while (j < v->apl - 1)
+		while (j < v->apl)
 		{
 			pre_plotline(v, i, j++, true);
 			plotline(v);
