@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/13 17:04:03 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/16 11:36:44 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ static void	set_line(char **ls, int i, t_vars *v, t_point *map)
 				map[j].color = (unsigned int)ft_atoi((const char *)ls[j] + k++);
 		}
 		else 
+		{
+			printf("ok\n");
 			map[j].color = DEFAULT_COLOR;
+		}
 		j++;
 	}
 }

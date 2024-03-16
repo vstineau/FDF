@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/0M/11 11:02:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/15 17:28:58 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/16 11:35:51 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,10 @@ static void	plotline(t_vars *v)
 
 	i = 0;
 	j = 0;
-	v->color = GREEN;
-	while ((int)i < (int)v->dx || (int)j < (int) -v->dy)
+	while ((int)i <= (int)v->dx || (int)j <= (int) -v->dy)
 	{
 		my_mlx_pixel_put(&(v->data), (int)v->x0, (int)v->y0, v->color);
-		printf("x0 = %f x1 = %f y0 = %f y1 = %f\n", v->x0, v->x1, v->y0, v->y1);
+		//printf("x0 = %f x1 = %f y0 = %f y1 = %f\n", v->x0, v->x1, v->y0, v->y1);
 		v->e2 = 2 * v->err;
 		if (v->e2 >= v->dy)
 		{
@@ -82,6 +81,8 @@ void	print_lines(t_vars *v)
 		j = 0;
 		while (j < v->apl - 1)
 		{
+			v->color = v->map[i][j].color;
+			printf("color = %d\n", v->color);
 			pre_plotline(v, i, j++, false);
 			plotline(v);
 		}
@@ -100,6 +101,9 @@ void	print_column(t_vars *v)
 		j = 0;
 		while (j < v->apl)
 		{
+			v->color = v->map[i][j].color;
+			printf("color = %d\n", v->color);
+			pre_plotline(v, i, j++, false);
 			pre_plotline(v, i, j++, true);
 			plotline(v);
 		}

@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/15 17:29:41 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/16 11:43:23 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define BLUE 0x000000FF
 # define OFFSET_X 480
 # define OFFSET_Y 270
-# define M 8
+# define M 30
 
 typedef struct s_data
 {

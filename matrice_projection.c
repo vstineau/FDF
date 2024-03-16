@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:29:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/15 17:22:03 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/16 11:38:28 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	init_map_iso(t_vars *v)
 		x = 0;
 		while (x < v->apl)
 		{
+			pt =v->map[y][x];
 			pt.x = v->matrice_p[0][0] *(v->map[y][x].x - v->map[y][x].y) * v->scale;
 			pt.y = (v->map[y][x].z * v->matrice_p[1][2]) + v->matrice_p[1][0] * (v->map[y][x].y + v->map[y][x].x);
 			v->map[y][x] = pt;

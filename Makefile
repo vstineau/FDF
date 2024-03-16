@@ -6,13 +6,13 @@
 #    By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 10:33:24 by vstineau          #+#    #+#              #
-#    Updated: 2024/03/12 10:56:15 by vstineau         ###   ########.fr        #
+#    Updated: 2024/03/16 11:51:10 by vstineau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= fdf
 CC				= cc
-CFLAGS		= -Wall -Wextra -Werror  -g3 -O2 -fno-builtin
+CFLAGS		= -Wall -Wextra -g3 -O2 -fno-builtin -Werror 
 SRCS			= main.c \
 						parsing.c \
 						\
@@ -34,7 +34,7 @@ MINILIBX	= minilibx-linux/libmlx.a
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
-	$(CC) $(CFLAGS) -o $(NAME) -lm -lX11 -lXext $(OBJS) $(LIBFT) $(MINILIBX)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MINILIBX) -lm -lX11 -lXext 
 
 $(LIBFT):
 	$(MAKE) -C LIBFT
