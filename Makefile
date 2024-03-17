@@ -6,7 +6,7 @@
 #    By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 10:33:24 by vstineau          #+#    #+#              #
-#    Updated: 2024/03/16 11:51:10 by vstineau         ###   ########.fr        #
+#    Updated: 2024/03/17 03:05:00 by vstineau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS			= main.c \
 						\
 						window.c \
 						image.c \
+						color.c \
 						segment.c \
 						mouse.c \
 						\

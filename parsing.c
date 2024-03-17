@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/16 11:36:44 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/17 03:15:25 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,17 @@ static void	set_line(char **ls, int i, t_vars *v, t_point *map)
 		k = 0;
 		map[j].x = j;
 		map[j].y = i;
-		while (ls[j][k])
+		while (ls[j][k] && ls[j][k] != ',')
 			map[j].z = ft_atoi((const char *)ls[j] + k++);
 		if (ls[j][k] == ',')
 		{
 			k += 2;
-			while (ls[j][k])
-				map[j].color = (unsigned int)ft_atoi((const char *)ls[j] + k++);
+			//while (ls[j][k])
+			map[j].color = get_color((unsigned int)ft_atoi_base(ls[j] + k, "0123456789ABCDEF"));
+			printf("COLOR = %d\n", map[j].color);
 		}
 		else 
 		{
-			printf("ok\n");
 			map[j].color = DEFAULT_COLOR;
 		}
 		j++;

@@ -6,7 +6,7 @@
 /*   By: vstineau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:24:54 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/11 11:59:06 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/17 01:51:09 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -52,6 +52,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t n);
 int		ft_atoi(const char *nptr);
+int		ft_atoi_base(char *str, char *base);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_realloc(void *old, size_t old_length, size_t new_length);
 char	*ft_strdup(const char *s);

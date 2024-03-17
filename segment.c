@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/0M/11 11:02:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/16 11:35:51 by vstineau         ###   ########.fr       */
+/*   Created: 2024/0v->scale/11 11:02:35 by vstineau          #+#    #+#             */
+/*   Updated: 2024/03/17 03:03:58 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ static void	pre_plotline(t_vars *v, int i, int j, bool vertical)
 {
 	if (vertical == true)
 	{
-		v->x0 = v->map[i][j].x * M;
-		v->x1 = v->map[i + 1][j].x * M;
-		v->y0 = v->map[i][j].y * M;
-		v->y1 = v->map[i + 1][j].y * M;
+		v->x0 = v->map[i][j].x * v->scale;
+		v->x1 = v->map[i + 1][j].x * v->scale;
+		v->y0 = v->map[i][j].y * v->scale;
+		v->y1 = v->map[i + 1][j].y * v->scale;
 	}
 	else 
 	{
-		v->x0 = v->map[i][j].x * M;
-		v->x1 = v->map[i][j + 1].x * M;
-		v->y0 = v->map[i][j].y * M;
-		v->y1 = v->map[i][j + 1].y * M;
+		v->x0 = v->map[i][j].x * v->scale;
+		v->x1 = v->map[i][j + 1].x * v->scale;
+		v->y0 = v->map[i][j].y * v->scale;
+		v->y1 = v->map[i][j + 1].y * v->scale;
 	}
 	v->dx = fabsf(v->x1 - v->x0);
 	v->dy = -fabsf(v->y1 - v->y0);
@@ -103,7 +103,6 @@ void	print_column(t_vars *v)
 		{
 			v->color = v->map[i][j].color;
 			printf("color = %d\n", v->color);
-			pre_plotline(v, i, j++, false);
 			pre_plotline(v, i, j++, true);
 			plotline(v);
 		}

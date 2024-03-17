@@ -6,13 +6,13 @@
 #    By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/01 14:25:51 by vstineau          #+#    #+#              #
-#    Updated: 2024/03/16 11:52:22 by vstineau         ###   ########.fr        #
+#    Updated: 2024/03/11 12:02:53 by vstineau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -g -O2 -fno-builtin -Werror
+CFLAGS = -Wall -Wextra -Werror -g -O2 -fno-builtin
 SRCS = ft_isalpha.c \
 			 ft_isdigit.c \
 			 ft_isalnum.c \
