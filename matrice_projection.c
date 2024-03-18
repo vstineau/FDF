@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:29:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/17 03:07:16 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/18 14:28:26 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	init_matrice_p(t_vars *v)
 	mini_init_matrice_p(v);
 }
 //MULTIPLICATION DE CHAQUE VECTEUR PAR LA MATRICE DE PROJECTION ISOMETRIQUE
-//POUR OBTENIR LES NOUVELLES COORDONNEES QUI REMPLACERONT LES ANCIENES
+//POUR OBTENIR LES NOUVELLES COORDONNEES QUI REMPLACERONT LES ANCIENNES
 
 void	init_map_iso(t_vars *v)
 {
@@ -54,9 +54,10 @@ void	init_map_iso(t_vars *v)
 		x = 0;
 		while (x < v->apl)
 		{
+			//printf("y = %f x = %f z = %f\n", v->map[y][x].y, v->map[y][x].x, v->map[y][x].z);
 			pt = v->map[y][x];
-			pt.x = v->matrice_p[0][0] *(v->map[y][x].x - v->map[y][x].y);
-			pt.y = (v->map[y][x].z * v->matrice_p[1][2]) + v->matrice_p[1][0] * (v->map[y][x].y + v->map[y][x].x);
+			pt.x = v->matrice_p[0][0] * v->map[y][x].x + v->matrice_p[0][1] * v->map[y][x].y;
+			pt.y = v->matrice_p[1][0] * v->map[y][x].x + v->matrice_p[1][1] * v->map[y][x].y + v->matrice_p[1][2] * v->map[y][x].z;
 			v->map[y][x] = pt;
 			//printf("x = %f y = %f z = %f\n", v->map[y][x].x, v->map[y][x].y, v->map[y][x].z);
 			x++;
