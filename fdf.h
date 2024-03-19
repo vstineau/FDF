@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/19 10:51:16 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:29:12 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@
 # include <limits.h>
 # include <stdio.h>
 # include <math.h>
+# include <stdint.h>
 # include <unistd.h>
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 # include "LIBFT/libft.h"
 
-# define WIN_WIDTH 960
-# define WIN_HEIGHT 540
+# define WIN_WIDTH 960 //1920
+# define WIN_HEIGHT 540//1080
 # define DEFAULT_COLOR 0xFFFFFFFF
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
-# define OFFSET_X 480
-# define OFFSET_Y 270
+# define OFFSET_X WIN_WIDTH / 2
+# define OFFSET_Y WIN_HEIGHT / 8
 
 typedef struct s_data
 {
@@ -49,6 +50,11 @@ typedef struct s_point
 	unsigned int color;
 }				t_point;
 
+typedef struct s_xorshift32_state
+{
+	uint8_t 	rand_colo;
+}				t_xorshift8_state;
+
 typedef struct s_vars
 {
 	void		*mlx;
@@ -59,6 +65,7 @@ typedef struct s_vars
 	float		scale;
 	double			height;
 	unsigned int	color;
+	unsigned int	default_color;
 	float	x0;
 	float x1;
 	float y0;
@@ -89,6 +96,7 @@ int		mouse_action(int keycode, t_vars *vars);
 int		window_action(int keycode, t_vars *vars);
 int		close_windows(t_vars *vars);
 int	loop(t_vars *vars);
+unsigned int	randomize_color(t_xorshift8_state *state);
 //MATRICE DE PROJECTION
 int	*get_new_position(float **mat_p, int x, int y, int z);
 void	init_map_iso(t_vars *v);
@@ -97,6 +105,6 @@ void	start_image(t_vars *v);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	print_lines(t_vars *v);
 void	print_column(t_vars *v);
-unsigned int	get_color(const char *trgb);
+unsigned int	get_color(const char *hexa_color);
 
 #endif

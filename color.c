@@ -6,13 +6,13 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 02:37:55 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/19 11:48:14 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:28:55 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-unsigned int	get_color(const char *hex_color)
+unsigned int	get_color(const char *hexa_color)
 {
 	unsigned int	color;
 	char	c;
@@ -20,10 +20,10 @@ unsigned int	get_color(const char *hex_color)
 	int	value;
 
 	color = 0;
-	i = 0;
-	while (hex_color[i])
+	i = 2;
+	while (hexa_color[i])
 	{
-		c = hex_color[i];
+		c = hexa_color[i];
 		value = 0;
 		if (c >= '0' && c <= '9')
 			value = c - 0;
@@ -35,4 +35,16 @@ unsigned int	get_color(const char *hex_color)
 		i++;
 	}
 	return (color);
+}
+
+unsigned int	randomize_color(t_xorshift8_state *state)
+{
+	uint8_t	x;
+
+	x = state->rand_colo;
+	x ^= x << 3;
+	x ^= x >> 5;
+	x ^= x << 2;
+	state->rand_colo = x;
+	return (x);	
 }

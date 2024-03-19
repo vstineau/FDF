@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:29:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/19 12:04:20 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:30:29 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	init_map_iso(t_vars *v)
 
 	y = 0;
 	init_matrice_p(v);
-	v->scale = 1.5;
+	v->scale = 15.5;
 	while (y < v->line_nb)
 	{
 		x = 0;

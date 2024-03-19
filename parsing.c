@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/19 11:57:24 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:06:14 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	set_line(char **ls, int i, t_vars *v, t_point *map)
 	int	k;
 	
 	j = 0;
+	v->default_color = DEFAULT_COLOR;
 	while (j < v->apl)
 	{
 		k = 0;
@@ -66,12 +67,9 @@ static void	set_line(char **ls, int i, t_vars *v, t_point *map)
 				k++;
 		}
 		if (ls[j][k] == ',')
-		{
-			k += 2;
 			map[j].color = get_color((const char *)ls[j] + k);
-		}
 		else
-			map[j].color = DEFAULT_COLOR;
+			map[j].color = v->default_color;
 		j++;
 	}
 }
