@@ -6,24 +6,33 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 02:37:55 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/17 02:55:45 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:48:14 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-unsigned int	get_color(int trgb)
+unsigned int	get_color(const char *hex_color)
 {
-	unsigned int	t;
-	unsigned int	r;
-	unsigned int	g;
-	unsigned int	b;
 	unsigned int	color;
+	char	c;
+	int	i;
+	int	value;
 
-	t = (trgb >> 24) & 0xFF;
-	r = (trgb >> 16) & 0xFF;
-	g = (trgb >> 8) & 0xFF;
-	b = trgb & 0xFF;
-	color = t << 24 | r << 16 | g << 8 | b;
+	color = 0;
+	i = 0;
+	while (hex_color[i])
+	{
+		c = hex_color[i];
+		value = 0;
+		if (c >= '0' && c <= '9')
+			value = c - 0;
+		else if (c >= 'a' && c <= 'f')
+			value = c - 'a' + 10;
+		else if (c >= 'A' && c <= 'F')
+			value = c - 'A' + 10;
+		color =  (color << 4) | value;
+		i++;
+	}
 	return (color);
 }

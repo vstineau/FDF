@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/18 16:03:56 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:57:24 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	set_line(char **ls, int i, t_vars *v, t_point *map)
 		if (ls[j][k] == ',')
 		{
 			k += 2;
-			map[j].color = get_color((unsigned int)ft_atoi_base(ls[j] + k, "0123456789ABCDEF"));
+			map[j].color = get_color((const char *)ls[j] + k);
 		}
 		else
 			map[j].color = DEFAULT_COLOR;

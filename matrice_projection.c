@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:29:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/18 15:59:49 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:04:20 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	init_map_iso(t_vars *v)
 
 	y = 0;
 	init_matrice_p(v);
-	v->scale = 20;
+	v->scale = 1.5;
 	while (y < v->line_nb)
 	{
 		x = 0;
@@ -59,7 +59,7 @@ void	init_map_iso(t_vars *v)
 			pt.x = v->matrice_p[0][0] * v->map[y][x].x + v->matrice_p[0][1] * v->map[y][x].y;
 			pt.y = v->matrice_p[1][0] * v->map[y][x].x + v->matrice_p[1][1] * v->map[y][x].y + v->matrice_p[1][2] * v->map[y][x].z;
 			v->map[y][x] = pt;
-			printf("x = %f y = %f z = %f\n", v->map[y][x].x, v->map[y][x].y, v->map[y][x].z);
+			//printf("x = %f y = %f z = %f\n", v->map[y][x].x, v->map[y][x].y, v->map[y][x].z);
 			x++;
 		}
 		y++;
