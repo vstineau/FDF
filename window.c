@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:48:38 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/19 15:25:18 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:14:23 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,41 @@ int	window_action(int keycode, t_vars *vars)
 		mlx_loop_end(vars->mlx);
 	if (keycode == XK_h)
 	{
-		printf("h = %f\n", vars->height);
+		vars->init = false;
 		vars->height += 0.1;
+		init_map_iso(vars);
+		start_image(vars);
+		print_lines(vars);
+		print_column(vars);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img, 0, 0);
 	}
 	if (keycode == XK_b)
 	{
-		printf("h = %f\n", vars->height);
+		vars->init = false;
 		vars->height -= 0.1;
+		init_map_iso(vars);
+		start_image(vars);
+		print_lines(vars);
+		print_column(vars);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img, 0, 0);
+	}
+	if (keycode == XK_d)
+	{
+		vars->init = false;
+		vars->scale -= 1;
+		start_image(vars);
+		print_lines(vars);
+		print_column(vars);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img, 0, 0);
+	}
+	if (keycode == XK_z)
+	{
+		vars->init = false;
+		vars->scale += 1;
+		start_image(vars);
+		print_lines(vars);
+		print_column(vars);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img, 0, 0);
 	}
 	return (0);
 }

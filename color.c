@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 02:37:55 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/19 15:28:55 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:07:34 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ unsigned int	get_color(const char *hexa_color)
 	return (color);
 }
 
+//https://en.wikipedia.org/wiki/Xorshift
 unsigned int	randomize_color(t_xorshift8_state *state)
 {
 	uint8_t	x;

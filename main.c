@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:35:02 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/19 13:40:30 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:41:00 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int argc, char *argv[])
 {
 	t_vars	v;
 
+	v = (t_vars) {0};
 	if (argc < 2)
 		return (1);
 	v.map = parse(argv[1], &v);

@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/19 15:29:12 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:23:29 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include "minilibx-linux/mlx_int.h"
 # include "LIBFT/libft.h"
 
-# define WIN_WIDTH 960 //1920
-# define WIN_HEIGHT 540//1080
+# define WIN_WIDTH 1920//960
+# define WIN_HEIGHT 1080//540
 # define DEFAULT_COLOR 0xFFFFFFFF
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
@@ -66,6 +66,8 @@ typedef struct s_vars
 	double			height;
 	unsigned int	color;
 	unsigned int	default_color;
+	float	a;
+	float b;
 	float	x0;
 	float x1;
 	float y0;
@@ -76,7 +78,9 @@ typedef struct s_vars
 	float sy;
 	float err;
 	float e2;
+	bool	init;
 	t_point		**map;
+	t_point		**map1;
 	t_data		data;
 }				t_vars;
 
