@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/21 13:38:16 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:51:27 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,9 @@ int		mouse_action(int keycode, t_vars *vars);
 //WINDOWS ACTIONS
 int		window_action(int keycode, t_vars *vars);
 int		close_windows(t_vars *vars);
+void	zoom_handler(int keycode, t_vars *vars);
+void	height_handler(int keycode, t_vars *vars);
+void	rotation_handler(int keycode, t_vars* vars);
 void	clear_image(t_vars *v, int	color);
 int	loop(t_vars *vars);
 unsigned int	randomize_color(t_xorshift8_state *state);

@@ -6,7 +6,7 @@
 #    By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 10:33:24 by vstineau          #+#    #+#              #
-#    Updated: 2024/03/21 11:13:55 by vstineau         ###   ########.fr        #
+#    Updated: 2024/03/21 14:47:01 by vstineau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS			= main.c \
 						free_exit.c \
 						\
 						window.c \
+						windows_action.c \
 						image.c \
 						color.c \
 						segment.c \
