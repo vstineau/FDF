@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:29:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/20 17:19:15 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:33:22 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	mini_init_matrice_p(t_vars *v)
 		v->a = 0.95445703708848;
 		v->b = 3.14159265359 / 4;
 	}
+	write(1, "ok\n", 3);
 	v->matrice_p[0][0] = cosf(v->b);
 	v->matrice_p[0][1] = -sinf(v->b);
 	v->matrice_p[0][2] = 0;

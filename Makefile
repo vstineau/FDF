@@ -6,13 +6,13 @@
 #    By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 10:33:24 by vstineau          #+#    #+#              #
-#    Updated: 2024/03/17 03:05:00 by vstineau         ###   ########.fr        #
+#    Updated: 2024/03/21 11:13:55 by vstineau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= fdf
 CC				= cc
-CFLAGS		= -Wall -Wextra -g3 -O2 -fno-builtin -Werror 
+CFLAGS		= -Wall -Wextra -MMD -g3 -O2 -fno-builtin -Werror
 SRCS			= main.c \
 						parsing.c \
 						\
@@ -27,15 +27,15 @@ SRCS			= main.c \
 						\
 						matrice_projection.c
 
-OBJS			= $(SRCS:.c=.o)
+OBJECTS			= $(SRCS:.c=.o)
 INCLUDES	= -I. -ILIBFT -IMINILIBX
 LIBFT 		= LIBFT/libft.a
 MINILIBX	= minilibx-linux/libmlx.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MINILIBX) -lm -lX11 -lXext 
+$(NAME): $(OBJECTS) $(LIBFT) $(MINILIBX)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIBFT) $(MINILIBX) -lm -lX11 -lXext 
 
 $(LIBFT):
 	$(MAKE) -C LIBFT
@@ -46,10 +46,12 @@ $(MINILIBX):
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
+-include $(OBJECTS:.o=.d)
+
 clean:
 	$(MAKE) -C LIBFT clean
 	$(MAKE) -C minilibx-linux clean
-	rm -rf $(OBJS)
+	rm -rf $(OBJECTS) $(OBJECTS:.o=.d)
 
 fclean: clean
 	$(MAKE) -C LIBFT fclean
