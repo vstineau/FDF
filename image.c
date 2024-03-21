@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:32:44 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/19 12:01:07 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:37:38 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,24 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	}
 	dest = data->addr + (y * data->line_length + x * (data->bit_per_pixel / 8));
 	*(unsigned int *)dest = color;
+}
+
+void	clear_image(t_vars *v, int	color)
+{
+	int	y;
+	int	x;
+	char	*pixel;
+
+	y = 0;
+	while(y < WIN_HEIGHT)
+	{
+		x = 0;
+		while (x < WIN_WIDTH)
+		{
+			pixel = v->data.addr + ( y *  v->data.line_length + x * (v->data.bit_per_pixel / 8));
+			*(unsigned int *)pixel = color;
+			x++;
+		}
+		y++;
+	}
 }
