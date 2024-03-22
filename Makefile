@@ -6,7 +6,7 @@
 #    By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 10:33:24 by vstineau          #+#    #+#              #
-#    Updated: 2024/03/21 14:47:01 by vstineau         ###   ########.fr        #
+#    Updated: 2024/03/22 17:17:05 by vstineau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRCS			= main.c \
 						segment.c \
 						mouse.c \
 						\
-						matrice_projection.c
+						matrice_projection.c \
+						matrices.c
 
 OBJECTS			= $(SRCS:.c=.o)
 INCLUDES	= -I. -ILIBFT -IMINILIBX
@@ -36,7 +37,9 @@ MINILIBX	= minilibx-linux/libmlx.a
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(MINILIBX)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIBFT) $(MINILIBX) -lm -lX11 -lXext 
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIBFT) $(MINILIBX) -lm -lX11 -lXext
+
+propre: all clean
 
 $(LIBFT):
 	$(MAKE) -C LIBFT

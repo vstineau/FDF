@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/21 14:51:27 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:29:31 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,40 @@ typedef struct s_point
 	unsigned int color;
 }				t_point;
 
+typedef union s_mat3
+{
+	float m[3][3];
+	struct
+	{
+		float    m00;
+		float    m01;
+		float    m02;
+		float    m10;
+		float    m11;
+		float    m12;
+		float    m20;
+		float    m21;
+		float    m22;
+	};
+}				t_mat3;
+
 typedef struct s_xorshift32_state
 {
-	uint8_t 	rand_colo;
-}				t_xorshift8_state;
+	uint32_t 	rand_colo;
+}				t_xorshift32_state;
+
+typedef struct s_vars	t_vars;
+
+typedef void (*t_fn)(t_vars *vars);
 
 typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
-	float		**matrice_p;
+	t_mat3	mat_p;
+	t_mat3	mat_rx;
+	t_mat3	mat_ry;
+	t_mat3	mat_rz;
 	int			line_nb;
 	int			apl;
 	float		scale;
@@ -82,6 +106,7 @@ typedef struct s_vars
 	t_point		**map;
 	t_point		**map1;
 	t_data		data;
+	t_fn	f[0xFFFF];
 }				t_vars;
 
 //PARSING :
@@ -99,14 +124,18 @@ int		mouse_action(int keycode, t_vars *vars);
 //WINDOWS ACTIONS
 int		window_action(int keycode, t_vars *vars);
 int		close_windows(t_vars *vars);
-void	zoom_handler(int keycode, t_vars *vars);
+void	zoom(t_vars *vars);
 void	height_handler(int keycode, t_vars *vars);
 void	rotation_handler(int keycode, t_vars* vars);
 void	clear_image(t_vars *v, int	color);
 int	loop(t_vars *vars);
-unsigned int	randomize_color(t_xorshift8_state *state);
-//MATRICE DE PROJECTION
+unsigned int	randomize_color(t_xorshift32_state *state);
+//MATRICES
 int	*get_new_position(float **mat_p, int x, int y, int z);
+void	apply_matrix(t_point **map, t_mat3 matrix, t_vars *v);
+void	init_mat_rx(t_vars *v);
+void	init_mat_ry(t_vars *v);
+void	init_mat_rz(t_vars *v);
 void	init_map_iso(t_vars *v);
 //AFFICHAGE DES PIXELS
 void	start_image(t_vars *v);
