@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/25 13:57:59 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:16:04 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void	height_down(t_vars *vars);
 void	clear_image(t_vars *v, int	color);
 void	change_color(t_vars *v);
 void	switch_colors(t_vars *vars);
+void	rotate_x(t_vars *vars);
 //MATRICES
 int	*get_new_position(float **mat_p, int x, int y, int z);
 void	apply_matrix(t_point **map, t_mat3 matrix, t_vars *v);

@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:48:38 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/25 13:57:20 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:15:38 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void f_init(t_vars *vars)
 	vars->f[XK_Down] = (void *)go_down;
 	vars->f[XK_m] = (void *)go_middle;
 	vars->f[XK_w] = (void *)change_color;
+	vars->f[XK_x] = (void *)rotate_x;
 }
 
 int	window_action(int keycode, t_vars *vars)

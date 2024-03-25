@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:42:11 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/25 13:14:26 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:21:15 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,9 @@ void	go_middle(t_vars *vars)
 		vars->data.offset_y = WIN_HEIGHT / 8.0;
 }
 
-void	rotation_handler(int keycode, t_vars* vars)
+void	rotate_x(t_vars *vars)
 {
-	if (keycode == XK_c)
-	{
-		vars->init = false;
-		apply_matrix(vars->map, vars->mat_rx, vars);
-	}
-	if (keycode == XK_m)
-	{
-		vars->init = false;
-		vars->b += 1;
-		init_map_iso(vars);
-	}
+	vars->init = false;
+	apply_matrix(vars->map1, vars->mat_rx, vars);
+	init_map_iso(vars);
 }
