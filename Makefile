@@ -6,7 +6,7 @@
 #    By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 10:33:24 by vstineau          #+#    #+#              #
-#    Updated: 2024/03/22 17:17:05 by vstineau         ###   ########.fr        #
+#    Updated: 2024/03/25 10:59:08 by vstineau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS			= main.c \
 						mouse.c \
 						\
 						matrice_projection.c \
-						matrices.c
+						matrices_rotations.c
 
 OBJECTS			= $(SRCS:.c=.o)
 INCLUDES	= -I. -ILIBFT -IMINILIBX

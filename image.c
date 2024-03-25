@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 14:32:44 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/21 13:37:38 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:36:08 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dest;
 
-	x += OFFSET_X;
-	y += OFFSET_Y;
+	x += data->offset_x;
+	y += data->offset_y;
 	if (x >= WIN_WIDTH || y >= WIN_HEIGHT || x < 0 || y < 0)
 	{
 		//printf("x = %d, y = %d\n", x, y);

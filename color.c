@@ -6,11 +6,44 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 02:37:55 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/22 15:16:21 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/25 13:54:19 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+//https://en.wikipedia.org/wiki/Xorshift
+static unsigned int	randomize_color(t_xorshift32_state *state)
+{
+	uint32_t	x;
+
+	x = state->rand_colo;
+	x ^= x << 13;
+	x ^= x >> 17;
+	x ^= x << 5;
+	state->rand_colo = x;
+	return (x);	
+}
+
+void	change_color(t_vars *v)
+{
+	int	y;
+	int	x;
+	t_xorshift32_state tmp;
+
+	y = 0;
+	while (y < v->line_nb)
+	{
+		x = 0;
+		while (x < v->apl)
+		{
+			tmp.rand_colo = v->map[y][x].color;
+			v->map[y][x].color = randomize_color(&tmp);
+			x++;
+		}
+		y++;
+	}
+}
 
 unsigned int	get_color(const char *hexa_color)
 {
@@ -35,17 +68,4 @@ unsigned int	get_color(const char *hexa_color)
 		i++;
 	}
 	return (color);
-}
-
-//https://en.wikipedia.org/wiki/Xorshift
-unsigned int	randomize_color(t_xorshift32_state *state)
-{
-	uint32_t	x;
-
-	x = state->rand_colo;
-	x ^= x << 13;
-	x ^= x >> 17;
-	x ^= x << 5;
-	state->rand_colo = x;
-	return (x);	
 }

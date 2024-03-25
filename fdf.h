@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/22 17:29:31 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/25 13:57:59 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00
 # define BLUE 0x000000FF
-# define OFFSET_X WIN_WIDTH / 2
-# define OFFSET_Y WIN_HEIGHT / 8
 
 typedef struct s_data
 {
@@ -40,6 +38,8 @@ typedef struct s_data
 	int		bit_per_pixel;
 	int		line_length;
 	int		endian;
+	float	offset_x;
+	float offset_y;
 }				t_data;
 
 typedef struct s_point
@@ -125,11 +125,17 @@ int		mouse_action(int keycode, t_vars *vars);
 int		window_action(int keycode, t_vars *vars);
 int		close_windows(t_vars *vars);
 void	zoom(t_vars *vars);
-void	height_handler(int keycode, t_vars *vars);
-void	rotation_handler(int keycode, t_vars* vars);
+void	unzoom(t_vars *vars);
+void	go_middle(t_vars *vars);
+void	go_right(t_vars *vars);
+void	go_left(t_vars *vars);
+void	go_up(t_vars *vars);
+void	go_down(t_vars *vars);
+void	height_up(t_vars *vars);
+void	height_down(t_vars *vars);
 void	clear_image(t_vars *v, int	color);
-int	loop(t_vars *vars);
-unsigned int	randomize_color(t_xorshift32_state *state);
+void	change_color(t_vars *v);
+void	switch_colors(t_vars *vars);
 //MATRICES
 int	*get_new_position(float **mat_p, int x, int y, int z);
 void	apply_matrix(t_point **map, t_mat3 matrix, t_vars *v);

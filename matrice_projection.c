@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:29:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/22 14:34:34 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:56:34 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	init_mat_p(t_vars *v)
 {
 	if (v->init)
 	{
+		v->data.offset_x = WIN_WIDTH / 2.0;
+		v->data.offset_y = WIN_HEIGHT / 8.0;
 		v->a = 0.95445703708848;
 		v->b = M_PI / 4;
 	}

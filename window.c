@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:48:38 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/22 17:28:04 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/25 13:57:20 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,25 @@ static void f_init(t_vars *vars)
 	ft_memset(vars->f, 0, 0xFFF);
 	vars->f[XK_Escape] = (void *)close_windows;
 	vars->f[XK_z] = (void *)zoom;
-	vars->f[XK_d] = NULL;
+	vars->f[XK_d] = (void *)unzoom;
+	vars->f[XK_h] = (void *)height_up;
+	vars->f[XK_b] = (void *)height_down;
+	vars->f[XK_Left] = (void *)go_left;
+	vars->f[XK_Right] = (void *)go_right;
+	vars->f[XK_Up] = (void *)go_up;
+	vars->f[XK_Down] = (void *)go_down;
+	vars->f[XK_m] = (void *)go_middle;
+	vars->f[XK_w] = (void *)change_color;
 }
 
 int	window_action(int keycode, t_vars *vars)
 {
+	f_init(vars);
+	clear_image(vars, 0);
 	if (!vars->f[keycode])
 		return (0);
-	f_init(vars);
+	else
+		vars->f[keycode](vars);
 /*	if (keycode == XK_Escape)
 		mlx_loop_end(vars->mlx);
 	clear_image(vars, 0);
@@ -44,11 +55,7 @@ int	close_windows(t_vars *vars)
 	return (0);
 }
 
-int	loop(t_vars *vars)
+void	switch_colors(t_vars *vars)
 {
-	t_xorshift32_state	state;
-
-	state.rand_colo = vars->default_color;
-	vars->default_color = randomize_color(&state);
-	return (0);
+	change_color(vars);
 }
