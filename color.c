@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 02:37:55 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/25 13:54:19 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:03:12 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ static unsigned int	randomize_color(t_xorshift32_state *state)
 	x ^= x >> 17;
 	x ^= x << 5;
 	state->rand_colo = x;
-	return (x);	
+	return (x);
 }
 
 void	change_color(t_vars *v)
 {
-	int	y;
-	int	x;
-	t_xorshift32_state tmp;
+	t_xorshift32_state	tmp;
+	int					y;
+	int					x;
 
 	y = 0;
 	while (y < v->line_nb)
@@ -48,9 +48,9 @@ void	change_color(t_vars *v)
 unsigned int	get_color(const char *hexa_color)
 {
 	unsigned int	color;
-	char	c;
-	int	i;
-	int	value;
+	char			c;
+	int				i;
+	int				value;
 
 	color = 0;
 	i = 2;
@@ -64,7 +64,7 @@ unsigned int	get_color(const char *hexa_color)
 			value = c - 'a' + 10;
 		else if (c >= 'A' && c <= 'F')
 			value = c - 'A' + 10;
-		color =  (color << 4) | value;
+		color = (color << 4) | value;
 		i++;
 	}
 	return (color);

@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:29:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/26 10:47:25 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:36:05 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,12 @@ void	init_map_iso(t_vars *v)
 		x = 0;
 		while (x < v->apl)
 		{
-			//printf("y = %f x = %f z = %f\n", v->map[y][x].y, v->map[y][x].x, v->map[y][x].z);
-			//v->map[y][x].z *= v->height;
 			pt = v->map[y][x];
-			pt.x = v->mat_p.m[0][0] * v->map[y][x].x + v->mat_p.m[0][1] * v->map[y][x].y;
-			pt.y = v->mat_p.m[1][0] * v->map[y][x].x + v->mat_p.m[1][1] * v->map[y][x].y + v->mat_p.m[1][2] * v->map[y][x].z * v->height;
+			pt.x = v->mat_p.m[0][0] * v->map[y][x].x
+				+ v->mat_p.m[0][1] * v->map[y][x].y;
+			pt.y = v->mat_p.m[1][0] * v->map[y][x].x
+				+ v->mat_p.m[1][1] * v->map[y][x].y + v->mat_p.m[1][2] * v->map[y][x].z * v->height;
 			v->map[y][x] = pt;
-			//printf("x = %f y = %f z = %f\n", v->map[y][x].x, v->map[y][x].y, v->map[y][x].z);
 			x++;
 		}
 		y++;

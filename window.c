@@ -6,14 +6,14 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:48:38 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/26 11:44:03 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:37:21 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 //LISTE DES KEYCODES : https://www.cl.cam.ac.uk/~mgk25/ucs/keysymdef.h
 
-static void f_init(t_vars *vars)
+static void	f_init(t_vars *vars)
 {
 	ft_memset(vars->f, 0, 0xFFF);
 	vars->f[XK_Escape] = (void *)close_windows;
@@ -39,12 +39,6 @@ int	window_action(int keycode, t_vars *vars)
 		return (0);
 	else
 		vars->f[keycode](vars);
-/*	if (keycode == XK_Escape)
-		mlx_loop_end(vars->mlx);
-	clear_image(vars, 0);
-	zoom_handler(keycode, vars);
-	height_handler(keycode, vars);
-	rotation_handler(keycode, vars);*/
 	print_lines(vars);
 	print_column(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->data.img, 0, 0);

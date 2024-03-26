@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/0v->scale/11 11:02:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/19 10:43:48 by vstineau         ###   ########.fr       */
+/*   Created: 2024/03/26 15:34:00 by vstineau          #+#    #+#             */
+/*   Updated: 2024/03/26 15:35:22 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	pre_plotline(t_vars *v, int i, int j, bool vertical)
 		v->y0 = v->map[i][j].y * v->scale;
 		v->y1 = v->map[i + 1][j].y * v->scale;
 	}
-	else 
+	else
 	{
 		v->x0 = v->map[i][j].x * v->scale;
 		v->x1 = v->map[i][j + 1].x * v->scale;
@@ -42,6 +42,7 @@ static void	pre_plotline(t_vars *v, int i, int j, bool vertical)
 	else
 		v->sy = -1;
 }
+
 //ALGO DE TRACE DE SEGMENT DE BRESENHAM
 static void	plotline(t_vars *v)
 {
@@ -53,7 +54,6 @@ static void	plotline(t_vars *v)
 	while ((int)i <= (int)v->dx || (int)j <= (int) -v->dy)
 	{
 		my_mlx_pixel_put(&(v->data), (int)v->x0, (int)v->y0, v->color);
-		//printf("x0 = %f x1 = %f y0 = %f y1 = %f\n", v->x0, v->x1, v->y0, v->y1);
 		v->e2 = 2 * v->err;
 		if (v->e2 >= v->dy)
 		{
@@ -65,10 +65,11 @@ static void	plotline(t_vars *v)
 			v->err += v->dx;
 			v->y0 += v->sy;
 		}
-		i+=fabs(v->sx);
-		j+=fabs(v->sy);
+		i += fabs(v->sx);
+		j += fabs(v->sy);
 	}
 }
+
 //TRACE TOUTES LES LIGNES ENTRE LES POINTS D'UNE MEME LIGNE
 void	print_lines(t_vars *v)
 {
@@ -82,13 +83,13 @@ void	print_lines(t_vars *v)
 		while (j < v->apl - 1)
 		{
 			v->color = v->map[i][j].color;
-			//printf("color = %d\n", v->color);
 			pre_plotline(v, i, j++, false);
 			plotline(v);
 		}
 		i++;
 	}
 }
+
 //TRACE TOUTES LES LIGNES ENTRE LES POINTS D'UNE MEME COLONNE
 void	print_column(t_vars *v)
 {
@@ -102,11 +103,9 @@ void	print_column(t_vars *v)
 		while (j < v->apl)
 		{
 			v->color = v->map[i][j].color;
-			//printf("color = %d\n", v->color);
 			pre_plotline(v, i, j++, true);
 			plotline(v);
 		}
 		i++;
 	}
 }
-
