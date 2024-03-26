@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:35:02 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/26 11:11:55 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/26 11:38:48 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	main(int argc, char *argv[])
 		return (1);
 	v.map = parse(argv[1], &v);
 	if (!v.map)
+	{
 		perror("invalid map");
+		exit(1);
+	}
 	v.map1 = parse(argv[1], &v);
 	init_map_iso(&v);
 	v.mlx = mlx_init();

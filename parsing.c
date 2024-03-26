@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/26 11:17:15 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/26 11:36:33 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ t_point	**parse(char *argv, t_vars *v)
 	if (fd < 0)
 		return (NULL);
 	tp = get_next_line(fd);
+	if (!tp)
+		return (NULL);
 	ln = malloc(sizeof(char) * ft_strlen(tp) + 1);
 	ft_strcpy(ln, tp);
 	while (tp)
