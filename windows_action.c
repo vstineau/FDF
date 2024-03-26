@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:42:11 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/25 14:21:15 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/26 10:49:46 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@ void	height_up(t_vars *vars)
 {
 	vars->init = false;
 	vars->height += 0.1;
-	init_map_iso(vars);
+	init_mat_p(vars);
+	apply_matrix(vars->map1, vars->mat_p, vars);
 }
 
 void	height_down(t_vars *vars)
 {
 	vars->init = false;
 	vars->height -= 0.1;
-	init_map_iso(vars);
+	init_mat_p(vars);
+	apply_matrix(vars->map1, vars->mat_p, vars);
 }
 
 void	go_right(t_vars *vars)
@@ -67,9 +69,18 @@ void	go_middle(t_vars *vars)
 		vars->data.offset_y = WIN_HEIGHT / 8.0;
 }
 
+void	rotate_z(t_vars *vars)
+{
+	vars->init = false;
+	vars->b += 0.1;
+	init_mat_p(vars);
+	apply_matrix(vars->map1, vars->mat_p, vars);
+}
+
 void	rotate_x(t_vars *vars)
 {
 	vars->init = false;
-	apply_matrix(vars->map1, vars->mat_rx, vars);
-	init_map_iso(vars);
+	vars->a += 0.1;
+	init_mat_p(vars);
+	apply_matrix(vars->map1, vars->mat_p, vars);
 }

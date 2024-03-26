@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:48:38 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/25 14:15:38 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/26 10:58:56 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void f_init(t_vars *vars)
 {
 	ft_memset(vars->f, 0, 0xFFF);
 	vars->f[XK_Escape] = (void *)close_windows;
-	vars->f[XK_z] = (void *)zoom;
-	vars->f[XK_d] = (void *)unzoom;
+	vars->f[XK_0] = (void *)zoom;
+	vars->f[XK_9] = (void *)unzoom;
 	vars->f[XK_h] = (void *)height_up;
 	vars->f[XK_b] = (void *)height_down;
 	vars->f[XK_Left] = (void *)go_left;
@@ -28,6 +28,7 @@ static void f_init(t_vars *vars)
 	vars->f[XK_m] = (void *)go_middle;
 	vars->f[XK_w] = (void *)change_color;
 	vars->f[XK_x] = (void *)rotate_x;
+	vars->f[XK_z] = (void *)rotate_z;
 }
 
 int	window_action(int keycode, t_vars *vars)
