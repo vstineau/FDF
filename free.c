@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:08:46 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/26 11:05:50 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/27 13:32:24 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,17 @@ void	ft_free_point(t_point **tab, int linenumb)
 	if (!tab)
 		return ;
 	i = 0;
-	while (i < linenumb)
+	while (i < linenumb && tab[i])
 		free(tab[i++]);
 	free(tab);
+}
+
+void	error_ln(char *ln)
+{
+	if (!ln)
+		exit(1);
+	else
+		return ;
 }
 
 void	ft_free_char_tab(char **tab)

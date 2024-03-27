@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   windows_action3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 11:27:18 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/27 14:59:14 by vstineau         ###   ########.fr       */
+/*   Created: 2024/03/27 10:34:46 by vstineau          #+#    #+#             */
+/*   Updated: 2024/03/27 10:35:11 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-void	*ft_realloc(void *old, size_t old_length, size_t new_length)
+void	rotate_z(t_vars *vars)
 {
-	void	*new_ptr;
+	vars->init = false;
+	vars->b += 0.1;
+	init_mat_p(vars);
+	apply_matrix(vars->map1, vars->mat_p, vars);
+}
 
-	new_ptr = ft_calloc(new_length, 1);
-	if (new_ptr == NULL)
-	{
-		if (old)
-			free(old);
-		return (NULL);
-	}
-	if (old == NULL)
-		return (new_ptr);
-	ft_memcpy(new_ptr, old, old_length);
-	free(old);
-	return (new_ptr);
+void	rotate_x(t_vars *vars)
+{
+	vars->init = false;
+	vars->a += 0.1;
+	init_mat_p(vars);
+	apply_matrix(vars->map1, vars->mat_p, vars);
 }

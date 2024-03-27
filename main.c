@@ -6,34 +6,60 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:35:02 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/26 11:38:48 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:44:27 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "minilibx-linux/mlx.h"
 
-int	main(int argc, char *argv[])
+static void	handle_error_parse1(t_vars *v)
 {
-	t_vars	v;
-
-	v = (t_vars) {0};
-	if (argc < 2)
-		return (1);
-	v.map = parse(argv[1], &v);
-	if (!v.map)
+	if (!v->map)
 	{
 		perror("invalid map");
 		exit(1);
 	}
+	else
+		return ;
+}
+
+static void	handle_error_parse2(t_vars *v)
+{
+	if (!v->map1)
+	{
+		free_end(v);
+		exit(1);
+	}
+	else
+		return ;
+}
+
+static void	handle_error_mlx(t_vars *v)
+{
+	if (!v->mlx)
+	{
+		free_end(v);
+		exit(1);
+	}
+	else
+		return ;
+}
+
+int	main(int argc, char *argv[])
+{
+	t_vars	v;
+
+	v = (t_vars){0};
+	if (argc < 2)
+		return (1);
+	v.map = parse(argv[1], &v);
+	handle_error_parse1(&v);
 	v.map1 = parse(argv[1], &v);
+	handle_error_parse2(&v);
 	init_map_iso(&v);
 	v.mlx = mlx_init();
-	if (!v.mlx)
-	{
-		free_end(&v);
-		return (1);
-	}
+	handle_error_mlx(&v);
 	v.win = mlx_new_window(v.mlx, WIN_WIDTH, WIN_HEIGHT, "FDF");
 	start_image(&v);
 	print_lines(&v);

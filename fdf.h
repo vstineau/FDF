@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/26 15:32:40 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/27 13:33:40 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void			ft_free_int_tab2(int ***tab, int linenumb, int apl);
 void			ft_free_char_tab(char **tab);
 void			ft_free_and_exit(char **map, t_point **tab, t_vars *v);
 void			ft_free_and_exit2(t_vars *v);
+void	free_ln(char **map, char *ln);
+void	error_ln(char *ln);
 //MOUSE ACTION;
 int				mouse_action(int keycode, t_vars *vars);
 //WINDOWS ACTIONS

@@ -6,7 +6,7 @@
 /*   By: vstineau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:43:42 by vstineau          #+#    #+#             */
-/*   Updated: 2024/02/26 12:00:43 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:54:02 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	free_all(char **split, size_t count)
 	size_t	i;
 
 	i = 0;
-	while (i < count)
+	while (i < count && split[i])
 	{
 		free(split[i]);
 		i++;
