@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/27 14:48:43 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:46:18 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,6 @@ static int	count_line(char *map)
 		if (map[i] == '\n')
 			count++;
 		i++;
-	}
-	return (count);
-}
-
-static int	arg_per_line(char **map)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (map[0][i])
-	{
-		if (map[0][i] != 32)
-			count++;
-		while (map[0][i] != 32 && map[0][i])
-			i++;
-		if (map[0][i] == 32)
-			i++;
 	}
 	return (count);
 }
@@ -102,6 +83,25 @@ static t_point	**ta_to_point(char **map, t_vars *v)
 	return (int_map);
 }
 
+int	arg_per_line(char **map)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (map[0][i])
+	{
+		if (map[0][i] != 32)
+			count++;
+		while (map[0][i] != 32 && map[0][i])
+			i++;
+		if (map[0][i] == 32)
+			i++;
+	}
+	return (count);
+}
+
 t_point	**parse(char *argv, t_vars *v)
 {
 	int		fd;
@@ -128,6 +128,7 @@ t_point	**parse(char *argv, t_vars *v)
 	free(tp);
 	map = ft_split(ln, '\n');
 	free_ln(map, ln);
+	check_apl(map);
 	close(fd);
 	return (ta_to_point(map, v));
 }

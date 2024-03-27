@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/27 13:33:40 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:44:48 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ typedef struct s_vars
 
 //PARSING :
 t_point			**parse(char *argv, t_vars *vars);
+int				arg_per_line(char **map);
+void			check_apl(char **map);
 //FONCTIONS POUR FREE :
 void			free_end(t_vars *v);
 void			ft_free_point(t_point **tab, int linenumb);

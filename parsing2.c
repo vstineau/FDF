@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse.c                                            :+:      :+:    :+:   */
+/*   parsing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 13:29:29 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/26 15:36:39 by vstineau         ###   ########.fr       */
+/*   Created: 2024/03/27 16:19:38 by vstineau          #+#    #+#             */
+/*   Updated: 2024/03/27 16:46:01 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	mouse_action(int keycode, t_vars	*vars)
+void	check_apl(char **map)
 {
-	if (keycode == 4)
-		vars->scale += 0.5;
-	if (keycode == 5)
-		vars->scale -= 0.5;
-	return (0);
+	int	i;
+	int	cw;
+
+	i = 0;
+	cw = arg_per_line(&map[i]);
+	while(map[i])
+	{
+		if (cw != arg_per_line(&map[i]))
+		{
+			ft_free_char_tab(map);
+			perror("invalid map");
+			exit(1);
+		}
+		else
+			cw = arg_per_line(&map[i]);
+		i++;		
+	}
 }

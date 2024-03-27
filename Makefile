@@ -6,7 +6,7 @@
 #    By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 10:33:24 by vstineau          #+#    #+#              #
-#    Updated: 2024/03/27 10:55:38 by vstineau         ###   ########.fr        #
+#    Updated: 2024/03/27 16:36:07 by vstineau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CC				= cc
 CFLAGS		= -Wall -Wextra -MMD -g3 -O2 -fno-builtin -Werror
 SRCS			= main.c \
 						parsing.c \
+						parsing2.c \
 						\
 						free.c \
 						free_exit.c \
@@ -26,7 +27,6 @@ SRCS			= main.c \
 						image.c \
 						color.c \
 						segment.c \
-						mouse.c \
 						\
 						matrice_projection.c \
 						matrices_rotations.c
