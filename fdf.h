@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/27 16:44:48 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:03:28 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,9 @@ typedef struct s_vars
 }				t_vars;
 
 //PARSING :
+void			check_file(char *argv);
 t_point			**parse(char *argv, t_vars *vars);
+char			*read_map(char *argv);
 int				arg_per_line(char **map);
 void			check_apl(char **map);
 //FONCTIONS POUR FREE :

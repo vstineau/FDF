@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/27 16:46:18 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:11:39 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	arg_per_line(char **map)
 
 	i = 0;
 	count = 0;
+	if (!map[0])
+		exit(1);
 	while (map[0][i])
 	{
 		if (map[0][i] != 32)
@@ -104,31 +106,13 @@ int	arg_per_line(char **map)
 
 t_point	**parse(char *argv, t_vars *v)
 {
-	int		fd;
 	char	**map;
 	char	*ln;
-	char	*tp;
 
-	fd = open(argv, O_RDONLY);
-	tp = get_next_line(fd);
-	if (!tp)
-		return (NULL);
-	ln = malloc(sizeof(char) * ft_strlen(tp) + 1);
-	error_ln(ln);
-	ft_strcpy(ln, tp);
-	while (tp)
-	{
-		ln = ft_realloc(ln, ft_strlen(ln), ft_strlen(tp) + ft_strlen(ln) + 1);
-		error_ln(ln);
-		ft_strcat(ln, tp);
-		free(tp);
-		tp = get_next_line(fd);
-	}
+	ln = read_map(argv);
 	v->line_nb = count_line(ln);
-	free(tp);
 	map = ft_split(ln, '\n');
 	free_ln(map, ln);
 	check_apl(map);
-	close(fd);
 	return (ta_to_point(map, v));
 }
