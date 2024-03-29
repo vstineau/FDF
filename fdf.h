@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/28 15:03:28 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 13:45:36 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_vars
 	float			err;
 	float			e2;
 	bool			init;
+	char			**temp_map;
 	double			height;
 	t_mat3			mat_p;
 	t_point			**map;

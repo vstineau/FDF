@@ -6,11 +6,12 @@
 /*   By: vstineau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:43:42 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 11:05:05 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 14:21:16 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static size_t	count_words(char const *s, char c)
 {

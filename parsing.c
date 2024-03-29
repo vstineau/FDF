@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/28 15:11:39 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 14:49:26 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static t_point	**ta_to_point(char **map, t_vars *v)
 	while (i < v->line_nb)
 	{
 		int_map[i] = malloc(sizeof(t_point) * v->apl);
-		if (!int_map)
+		if (!int_map[i])
 			ft_free_and_exit(map, int_map, v);
 		ls = ft_split(map[i], 32);
 		if (!ls)
@@ -106,13 +106,14 @@ int	arg_per_line(char **map)
 
 t_point	**parse(char *argv, t_vars *v)
 {
-	char	**map;
 	char	*ln;
 
 	ln = read_map(argv);
+	if (!ln)
+		exit(1);
 	v->line_nb = count_line(ln);
-	map = ft_split(ln, '\n');
-	free_ln(map, ln);
-	check_apl(map);
-	return (ta_to_point(map, v));
+	v->temp_map = ft_split(ln, '\n');
+	free_ln(v->temp_map, ln);
+	check_apl(v->temp_map);
+	return (ta_to_point(v->temp_map, v));
 }

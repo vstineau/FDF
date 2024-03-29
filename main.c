@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:35:02 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 11:17:41 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 14:47:59 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	handle_error_parse1(t_vars *v)
 {
 	if (!v->map)
 	{
+		ft_free_and_exit2(v);
 		perror("invalid map");
 		exit(1);
 	}
