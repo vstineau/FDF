@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:58:19 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/26 15:12:40 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 18:06:35 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	apply_matrix(t_point **map, t_mat3 matrix, t_vars *v)
 				* map[y][x].y + matrix.m[0][2] * map[y][x].z;
 			temp.y = matrix.m[1][0] * map[y][x].x + matrix.m[1][1]
 				* map[y][x].y + matrix.m[1][2] * map[y][x].z * v->height;
+			temp.z = matrix.m[2][0] * map[y][x].x + matrix.m[2][1]
+				* map[y][x].y + matrix.m[2][2] * map[y][x].z * v->height;
 			v->map[y][x] = temp;
 			x++;
 		}

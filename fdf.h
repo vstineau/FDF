@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 13:45:36 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 17:33:41 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ typedef struct s_vars
 	int				line_nb;
 	int				apl;
 	float			scale;
+	float			max_z;
+	float			min_z;
 	float			a;
 	float			b;
 	float			x0;

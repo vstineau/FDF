@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:29:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 16:41:58 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 17:50:48 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	init_mat_p(t_vars *v)
 {
 	if (v->init)
 	{
+		v->max_z = INT_MAX;
+		v->min_z = INT_MIN;
 		v->data.offset_x = WIN_WIDTH / 2.0;
 		v->data.offset_y = WIN_HEIGHT / 3.0;
 		v->a = 0.95445703708848;
@@ -36,14 +38,28 @@ void	init_mat_p(t_vars *v)
 	v->mat_p.m[2][2] = cosf(v->a);
 }
 
+static t_point	mu_ma_po(t_vars *v, int x, int y)
+{
+	t_point pt;
+
+	pt = v->map[y][x];
+	pt.x = v->mat_p.m[0][0] * v->map[y][x].x
+		+ v->mat_p.m[0][1] * v->map[y][x].y;
+	pt.y = v->mat_p.m[1][0] * v->map[y][x].x
+		+ v->mat_p.m[1][1] * v->map[y][x].y
+		+ v->mat_p.m[1][2] * v->map[y][x].z * v->height;
+	pt.z = v->mat_p.m[2][0] * v->map[y][x].x
+		+ v->mat_p.m[2][1] * v->map[y][x].y
+		+ v->mat_p.m[2][2] * v->map[y][x].z * v->height;
+	return (pt);
+}
+
 //MULTIPLICATION DE CHAQUE VECTEUR PAR LA MATRICE DE PROJECTION ISOMETRIQUE
 //POUR OBTENIR LES NOUVELLES COORDONNEES QUI REMPLACERONT LES ANCIENNES
-
 void	init_map_iso(t_vars *v)
 {
 	int		y;
 	int		x;
-	t_point	pt;
 
 	y = 0;
 	init_mat_p(v);
@@ -53,13 +69,7 @@ void	init_map_iso(t_vars *v)
 		x = 0;
 		while (x < v->apl)
 		{
-			pt = v->map[y][x];
-			pt.x = v->mat_p.m[0][0] * v->map[y][x].x
-				+ v->mat_p.m[0][1] * v->map[y][x].y;
-			pt.y = v->mat_p.m[1][0] * v->map[y][x].x
-				+ v->mat_p.m[1][1] * v->map[y][x].y
-				+ v->mat_p.m[1][2] * v->map[y][x].z * v->height;
-			v->map[y][x] = pt;
+			v->map[y][x] = mu_ma_po(v, x, y);
 			x++;
 		}
 		y++;
