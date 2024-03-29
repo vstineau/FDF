@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 16:19:38 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/28 15:13:16 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 10:17:02 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*read_map(char *argv)
 	fd = open(argv, O_RDONLY);
 	rd = 4096;
 	buffer[4096] = '\0';
-	map = calloc(1, 1);
+	map = ft_calloc(1, 1);
 	if (!map)
 		exit(1);
 	while (rd >= 4096)
