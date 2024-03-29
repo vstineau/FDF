@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:35:02 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/28 15:04:49 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 11:17:41 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,6 @@ static void	handle_error_parse1(t_vars *v)
 		return ;
 }
 
-static void	handle_error_parse2(t_vars *v)
-{
-	if (!v->map1)
-	{
-		free_end(v);
-		exit(1);
-	}
-	else
-		return ;
-}
-
 static void	handle_error_mlx(t_vars *v)
 {
 	if (!v->mlx)
@@ -44,6 +33,30 @@ static void	handle_error_mlx(t_vars *v)
 	}
 	else
 		return ;
+}
+
+static void	dupplicate_map(t_vars *v)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	v->map1 = malloc(sizeof(t_point *) * v->line_nb);
+	if (!v->map1)
+		ft_free_and_exit2(v);
+	while (i < v->line_nb)
+	{
+		j = 0;
+		v->map1[i] = malloc(sizeof(t_point) * v->apl);
+		if (!v->map1[i])
+			ft_free_and_exit2(v);
+		while (j < v->apl)
+		{
+			v->map1[i][j] = v->map[i][j];
+			j++;
+		}
+		i++;
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -56,8 +69,7 @@ int	main(int argc, char *argv[])
 		return (1);
 	v.map = parse(argv[1], &v);
 	handle_error_parse1(&v);
-	v.map1 = parse(argv[1], &v);
-	handle_error_parse2(&v);
+	dupplicate_map(&v);
 	init_map_iso(&v);
 	v.mlx = mlx_init();
 	handle_error_mlx(&v);
