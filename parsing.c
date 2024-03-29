@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 16:42:37 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 17:07:22 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static int	count_line(char *map)
 	{
 		if (map[i] == '\n')
 		{
-			write(1, "ok5\n", 4);
 			count++;
 		}
 		i++;
@@ -115,7 +114,6 @@ t_point	**parse(char *argv, t_vars *v)
 	if (!ln)
 		exit(1);
 	v->line_nb = count_line(ln);
-	printf("ln = %s\n", ln);
 	v->temp_map = ft_split(ln, '\n');
 	free_ln(v->temp_map, ln);
 	check_apl(v->temp_map);
