@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 16:19:38 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 10:28:37 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 16:59:52 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ char	*read_map(char *argv)
 			return (NULL);
 		}
 		map = ft_join_free(map, buffer);
-		map[rd] = '\0';
 	}
 	close(fd);
 	return (map);

@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 12:58:17 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 13:49:08 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/03/29 16:17:51 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ void	free_ln(char **map, char *ln)
 		exit(1);
 	}
 	else
+	{
 		free(ln);
+	}
 }
