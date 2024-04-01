@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:29:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 17:50:48 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/01 18:40:36 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,50 @@ static t_point	mu_ma_po(t_vars *v, int x, int y)
 	return (pt);
 }
 
+void	set_z_max(t_vars *v)
+{
+	int i;
+	int j;
+	int z_max;
+
+	i = 0;
+	z_max = FLOAT_MIN;
+	while (i < v->line_nb)
+	{
+		j = 0;
+		while (j < v->apl)
+		{
+			if (v->map[i][j].z >= z_max)
+				z_max = v->map[i][j].z
+			j++;
+		}
+		i++;
+	}
+	v->z_max = z_max;
+}
+
+void	set_z_min(t_vars *v)
+{
+	int i;
+	int j;
+	int z_min;
+
+	i = 0;
+	z_min = FLOAT_MAX;
+	while (i < v->line_nb)
+	{
+		j = 0;
+		while (j < v->apl)
+		{
+			if (v->map[i][j].z <= z_min)
+				z_min = v->map[i][j].z
+			j++;
+		}
+		i++;
+	}
+	v->z_max = z_min;
+}
+
 //MULTIPLICATION DE CHAQUE VECTEUR PAR LA MATRICE DE PROJECTION ISOMETRIQUE
 //POUR OBTENIR LES NOUVELLES COORDONNEES QUI REMPLACERONT LES ANCIENNES
 void	init_map_iso(t_vars *v)
@@ -74,4 +118,6 @@ void	init_map_iso(t_vars *v)
 		}
 		y++;
 	}
+	set_z_max(v);
+	set_z_min(v);
 }

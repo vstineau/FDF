@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 17:33:41 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/01 18:43:59 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ void			start_image(t_vars *v);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void			print_lines(t_vars *v);
 void			print_column(t_vars *v);
+void			set_z_max(t_vars *v);
+void			set_z_min(t_vars *v);
 unsigned int	get_color(const char *hexa_color);
 
 #endif
