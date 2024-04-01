@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:58:19 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 18:06:35 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/01 18:48:33 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,6 @@ void	apply_matrix(t_point **map, t_mat3 matrix, t_vars *v)
 		}
 		y++;
 	}
+	set_z_min(v);
+	set_z_min(v);
 }
