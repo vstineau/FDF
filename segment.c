@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:34:00 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 17:11:53 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:00:13 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	print_lines(t_vars *v)
 		while (j < v->apl - 1)
 		{
 			v->color = v->map[i][j].color;
+			set_transparency(v, &v->map[i][j]);
 			pre_plotline(v, i, j++, false);
 			plotline(v);
 		}
@@ -103,6 +104,7 @@ void	print_column(t_vars *v)
 		while (j < v->apl)
 		{
 			v->color = v->map[i][j].color;
+			set_transparency(v, &v->map[i][j]);
 			pre_plotline(v, i, j++, true);
 			plotline(v);
 		}

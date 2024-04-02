@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/04/01 18:43:59 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:19:28 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ void			ft_free_int_tab2(int ***tab, int linenumb, int apl);
 void			ft_free_char_tab(char **tab);
 void			ft_free_and_exit(char **map, t_point **tab, t_vars *v);
 void			ft_free_and_exit2(t_vars *v);
-void	free_ln(char **map, char *ln);
-void	error_ln(char *ln);
+void			free_ln(char **map, char *ln);
+void			error_ln(char *ln);
 //MOUSE ACTION;
 int				mouse_action(int keycode, t_vars *vars);
 //WINDOWS ACTIONS
@@ -140,6 +140,8 @@ void			init_map_iso(t_vars *v);
 //AFFICHAGE DES PIXELS
 void			start_image(t_vars *v);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+float			inverse_lerp(float min, float max, float z);
+void			set_transparency(t_vars *v, t_point *p);
 void			print_lines(t_vars *v);
 void			print_column(t_vars *v);
 void			set_z_max(t_vars *v);

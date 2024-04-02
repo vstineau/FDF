@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:58:19 by vstineau          #+#    #+#             */
-/*   Updated: 2024/04/01 18:48:33 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:18:13 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,21 @@ void	apply_matrix(t_point **map, t_mat3 matrix, t_vars *v)
 	}
 	set_z_min(v);
 	set_z_min(v);
+}
+
+//https://www.gamedev.net/articles/programming/
+//general-and-gameplay-programming/inverse-lerp-a-super-
+//useful-yet-often-overlooked-function-r5230/
+
+float	inverse_lerp(float min, float max, float z)
+{
+	return ((z - min) / (max - min));
+}
+
+void	set_transparency(t_vars *v, t_point *p)
+{
+	unsigned char	t;
+
+	t = (unsigned char)(255 * inverse_lerp(v->min_z, v->max_z, p->z));
+	p->color = p->color | (t << 24);
 }

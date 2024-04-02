@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:29:35 by vstineau          #+#    #+#             */
-/*   Updated: 2024/04/01 18:40:36 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:17:15 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	init_mat_p(t_vars *v)
 {
 	if (v->init)
 	{
-		v->max_z = INT_MAX;
-		v->min_z = INT_MIN;
+		v->max_z = -8000.0;
+		v->min_z = 8000.0;
 		v->data.offset_x = WIN_WIDTH / 2.0;
 		v->data.offset_y = WIN_HEIGHT / 3.0;
 		v->a = 0.95445703708848;
@@ -40,7 +40,7 @@ void	init_mat_p(t_vars *v)
 
 static t_point	mu_ma_po(t_vars *v, int x, int y)
 {
-	t_point pt;
+	t_point	pt;
 
 	pt = v->map[y][x];
 	pt.x = v->mat_p.m[0][0] * v->map[y][x].x
@@ -56,46 +56,46 @@ static t_point	mu_ma_po(t_vars *v, int x, int y)
 
 void	set_z_max(t_vars *v)
 {
-	int i;
-	int j;
-	int z_max;
+	int	i;
+	int	j;
+	int	z_max;
 
 	i = 0;
-	z_max = FLOAT_MIN;
+	z_max = INT_MIN;
 	while (i < v->line_nb)
 	{
 		j = 0;
 		while (j < v->apl)
 		{
 			if (v->map[i][j].z >= z_max)
-				z_max = v->map[i][j].z
+				z_max = v->map[i][j].z;
 			j++;
 		}
 		i++;
 	}
-	v->z_max = z_max;
+	v->max_z = z_max;
 }
 
 void	set_z_min(t_vars *v)
 {
-	int i;
-	int j;
-	int z_min;
+	int	i;
+	int	j;
+	int	z_min;
 
 	i = 0;
-	z_min = FLOAT_MAX;
+	z_min = INT_MAX;
 	while (i < v->line_nb)
 	{
 		j = 0;
 		while (j < v->apl)
 		{
 			if (v->map[i][j].z <= z_min)
-				z_min = v->map[i][j].z
+				z_min = v->map[i][j].z;
 			j++;
 		}
 		i++;
 	}
-	v->z_max = z_min;
+	v->max_z = z_min;
 }
 
 //MULTIPLICATION DE CHAQUE VECTEUR PAR LA MATRICE DE PROJECTION ISOMETRIQUE
