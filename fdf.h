@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/04/02 11:19:28 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:56:51 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include "minilibx-linux/mlx_int.h"
 # include "LIBFT/libft.h"
 
-# define WIN_WIDTH 960
-# define WIN_HEIGHT 540
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 # define DEFAULT_COLOR 0xFFFFFFFF
 # define RED 0x00FF0000
 # define GREEN 0x0000FF00

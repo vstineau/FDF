@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 15:34:00 by vstineau          #+#    #+#             */
-/*   Updated: 2024/04/02 11:00:13 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/02 12:04:00 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ static void	pre_plotline(t_vars *v, int i, int j, bool vertical)
 //ALGO DE TRACE DE SEGMENT DE BRESENHAM
 static void	plotline(t_vars *v)
 {
-	float	i;
-	float	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
 	while ((int)i <= (int)v->dx || (int)j <= (int) -v->dy)
 	{
 		my_mlx_pixel_put(&(v->data), (int)v->x0, (int)v->y0, v->color);
-		v->e2 = 2 * v->err;
+		v->e2 = 2 * (int)v->err;
 		if (v->e2 >= v->dy)
 		{
 			v->err += v->dy;
@@ -65,8 +65,8 @@ static void	plotline(t_vars *v)
 			v->err += v->dx;
 			v->y0 += v->sy;
 		}
-		i += fabs(v->sx);
-		j += fabs(v->sy);
+		i += (int)fabs(v->sx);
+		j += (int)fabs(v->sy);
 	}
 }
 
