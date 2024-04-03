@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:19:57 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 17:07:22 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/03 11:16:59 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ t_point	**parse(char *argv, t_vars *v)
 	ln = read_map(argv);
 	if (!ln)
 		exit(1);
+	set_scale(ln, v);
 	v->line_nb = count_line(ln);
 	v->temp_map = ft_split(ln, '\n');
 	free_ln(v->temp_map, ln);

@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:38:36 by vstineau          #+#    #+#             */
-/*   Updated: 2024/04/02 11:56:51 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/03 10:58:21 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ t_point			**parse(char *argv, t_vars *vars);
 char			*read_map(char *argv);
 int				arg_per_line(char **map);
 void			check_apl(char **map);
+void			set_scale(char *ln, t_vars *v);
 //FONCTIONS POUR FREE :
 void			free_end(t_vars *v);
 void			ft_free_point(t_point **tab, int linenumb);

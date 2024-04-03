@@ -6,7 +6,7 @@
 /*   By: vstineau <vstineau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 16:19:38 by vstineau          #+#    #+#             */
-/*   Updated: 2024/03/29 17:06:34 by vstineau         ###   ########.fr       */
+/*   Updated: 2024/04/03 10:57:35 by vstineau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,19 @@ void	check_apl(char **map)
 			cw = arg_per_line(&map[i]);
 		i++;
 	}
+}
+
+void	set_scale(char *ln, t_vars *v)
+{
+	size_t	lenght;
+
+	lenght = ft_strlen(ln);
+	if (lenght <= 4096)
+		v->scale = 16;
+	else if (lenght <= 8192)
+		v->scale = 8;
+	else
+		v->scale = 1;
 }
 
 void	check_file(char *argv)
